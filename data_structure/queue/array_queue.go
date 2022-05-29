@@ -12,12 +12,12 @@ type arrayQueue struct {
 	values  []int
 }
 
-func NewArrayQueue(size int) ArrayQueue {
-	return &arrayQueue{maxSize: size, front: -1, rear: -1, values: make([]int, size)}
+func NewArrayQueue(size int) Queue {
+	return &arrayQueue{maxSize: size, front: 0, rear: 0, values: make([]int, size)}
 }
 
 func (a *arrayQueue) IsFull() bool {
-	return a.rear == a.maxSize-1
+	return a.rear == a.maxSize
 }
 
 func (a *arrayQueue) IsEmpty() bool {
@@ -28,8 +28,8 @@ func (a *arrayQueue) Push(value int) error {
 	if a.IsFull() {
 		return errors.New("queue is full")
 	}
-	a.rear++
 	a.values[a.rear] = value
+	a.rear++
 	return nil
 }
 
@@ -37,8 +37,20 @@ func (a *arrayQueue) Pop() (int, error) {
 	if a.IsEmpty() {
 		return 0, errors.New("queue is empty")
 	}
+	value := a.values[a.front]
 	a.front++
+	return value, nil
+}
+
+func (a *arrayQueue) Head() (int, error) {
+	if a.IsEmpty() {
+		return 0, errors.New("queue is empty")
+	}
 	return a.values[a.front], nil
+}
+
+func (a *arrayQueue) Size() int {
+	return a.rear - a.front
 }
 
 func (a *arrayQueue) Show() {
