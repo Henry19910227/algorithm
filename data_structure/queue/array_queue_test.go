@@ -33,14 +33,6 @@ func TestArrayQueue_IsFull(t *testing.T) {
 	assert.Equal(t, true, queue.IsFull())
 }
 
-func TestArrayQueue_Push(t *testing.T) {
-	queue := NewArrayQueue(3)
-	queue.Push(1)
-	queue.Push(2)
-	queue.Push(3)
-	assert.EqualError(t, queue.Push(4), "queue is full")
-}
-
 func TestArrayQueue_Head(t *testing.T) {
 	queue := NewArrayQueue(2)
 	_, err := queue.Head()

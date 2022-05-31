@@ -6,9 +6,9 @@ import (
 )
 
 type arrayQueue struct {
-	maxSize int //queue的最大容量
-	front   int //queue頭部(指向第一筆資料的前一個位置)
-	rear    int //queue尾部(指向最後一筆資料的當前位置)
+	maxSize int
+	front   int
+	rear    int
 	values  []int
 }
 
