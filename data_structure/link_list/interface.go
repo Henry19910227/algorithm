@@ -8,4 +8,6 @@ type Node interface {
 
 type LinkList interface {
 	Add(node Node)
+	List() []int64
+	Insert(index int, node Node)
 }
