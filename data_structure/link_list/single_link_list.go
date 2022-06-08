@@ -1,5 +1,7 @@
 package link_list
 
+import "errors"
+
 type singleLinkList struct {
 	Head Node
 }
@@ -40,4 +42,16 @@ func (s *singleLinkList) Insert(index int, node Node) {
 		count++
 	}
 	s.Add(node)
+}
+
+func (s *singleLinkList) Delete(id int64) error {
+	temp := s.Head
+	for temp.Next() != nil {
+		if temp.Next().ID() == id {
+			temp.SetNext(temp.Next().Next())
+			return nil
+		}
+		temp = temp.Next()
+	}
+	return errors.New("node not found")
 }
