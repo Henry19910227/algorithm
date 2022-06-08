@@ -43,3 +43,22 @@ func TestSingleLinkList_Len(t *testing.T) {
 	linkList.Add(NewNode(30))
 	assert.Equal(t, 3, linkList.Len())
 }
+
+func TestSingleLinkList_Get(t *testing.T) {
+	linkList := NewSingleLinkList()
+	linkList.Add(NewNode(10))
+	linkList.Add(NewNode(20))
+	linkList.Add(NewNode(30))
+	value, err := linkList.Get(0)
+	assert.NoError(t, err)
+	assert.Equal(t, int64(10), value)
+	value, err = linkList.Get(1)
+	assert.NoError(t, err)
+	assert.Equal(t, int64(20), value)
+	value, err = linkList.Get(2)
+	assert.NoError(t, err)
+	assert.Equal(t, int64(30), value)
+	value, err = linkList.Get(3)
+	assert.Error(t, err)
+	assert.Equal(t, int64(0), value)
+}
