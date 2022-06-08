@@ -34,3 +34,12 @@ func TestSingleLinkList_Delete(t *testing.T) {
 	assert.Equal(t, []int64{10, 30}, linkList.List())
 	assert.Error(t, linkList.Delete(100))
 }
+
+func TestSingleLinkList_Len(t *testing.T) {
+	linkList := NewSingleLinkList()
+	assert.Equal(t, 0, linkList.Len())
+	linkList.Add(NewNode(10))
+	linkList.Add(NewNode(20))
+	linkList.Add(NewNode(30))
+	assert.Equal(t, 3, linkList.Len())
+}
