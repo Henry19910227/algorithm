@@ -9,6 +9,7 @@ type Node interface {
 type LinkList interface {
 	Add(node Node)
 	List() []int64
+	Get(index int) (int64, error)
 	Insert(index int, node Node)
 	Delete(id int64) error
 	Len() int

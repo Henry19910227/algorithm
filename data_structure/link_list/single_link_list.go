@@ -29,6 +29,19 @@ func (s *singleLinkList) List() []int64 {
 	return list
 }
 
+func (s *singleLinkList) Get(index int) (int64, error) {
+	temp := s.Head
+	count := 0
+	for temp.Next() != nil {
+		temp = temp.Next()
+		if count == index {
+			return temp.ID(), nil
+		}
+		count++
+	}
+	return 0, errors.New("linklist overflow")
+}
+
 func (s *singleLinkList) Insert(index int, node Node) {
 	temp := s.Head
 	var count int
