@@ -78,3 +78,8 @@ func (s *singleLinkList) Len() int {
 	}
 	return count
 }
+
+// FindReverseIndex 查詢 single_link_list 倒數第K個節點
+func FindReverseIndex(linkList LinkList, k int) (int64, error) {
+	return linkList.Get(linkList.Len() - k)
+}

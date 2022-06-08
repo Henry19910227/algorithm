@@ -62,3 +62,23 @@ func TestSingleLinkList_Get(t *testing.T) {
 	assert.Error(t, err)
 	assert.Equal(t, int64(0), value)
 }
+
+// 面試題1：查詢 single_link_list 倒數第K個節點
+func TestFindReverseIndex(t *testing.T) {
+	linkList := NewSingleLinkList()
+	linkList.Add(NewNode(10))
+	linkList.Add(NewNode(20))
+	linkList.Add(NewNode(30))
+	value, err := FindReverseIndex(linkList, 1)
+	assert.NoError(t, err)
+	assert.Equal(t, int64(30), value)
+	value, err = FindReverseIndex(linkList, 2)
+	assert.NoError(t, err)
+	assert.Equal(t, int64(20), value)
+	value, err = FindReverseIndex(linkList, 3)
+	assert.NoError(t, err)
+	assert.Equal(t, int64(10), value)
+	value, err = FindReverseIndex(linkList, 4)
+	assert.Error(t, err)
+	assert.Equal(t, int64(0), value)
+}
