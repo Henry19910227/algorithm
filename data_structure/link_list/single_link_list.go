@@ -55,3 +55,13 @@ func (s *singleLinkList) Delete(id int64) error {
 	}
 	return errors.New("node not found")
 }
+
+func (s *singleLinkList) Len() int {
+	temp := s.Head
+	var count int
+	for temp.Next() != nil {
+		count++
+		temp = temp.Next()
+	}
+	return count
+}

@@ -11,4 +11,5 @@ type LinkList interface {
 	List() []int64
 	Insert(index int, node Node)
 	Delete(id int64) error
+	Len() int
 }
