@@ -7,6 +7,8 @@ type Node interface {
 }
 
 type LinkList interface {
+	Head() Node
+	SetHead(node Node)
 	Add(node Node)
 	List() []int64
 	Get(index int) (int64, error)

@@ -3,16 +3,24 @@ package link_list
 import "errors"
 
 type singleLinkList struct {
-	Head Node
+	head Node
 }
 
 func NewSingleLinkList() LinkList {
 	head := NewNode(0)
-	return &singleLinkList{Head: head}
+	return &singleLinkList{head: head}
+}
+
+func (s *singleLinkList) Head() Node {
+	return s.head
+}
+
+func (s *singleLinkList) SetHead(node Node) {
+	s.head = node
 }
 
 func (s *singleLinkList) Add(node Node) {
-	temp := s.Head
+	temp := s.head
 	for temp.Next() != nil {
 		temp = temp.Next()
 	}
@@ -21,7 +29,7 @@ func (s *singleLinkList) Add(node Node) {
 
 func (s *singleLinkList) List() []int64 {
 	list := make([]int64, 0)
-	temp := s.Head
+	temp := s.head
 	for temp.Next() != nil {
 		temp = temp.Next()
 		list = append(list, temp.ID())
@@ -30,7 +38,7 @@ func (s *singleLinkList) List() []int64 {
 }
 
 func (s *singleLinkList) Get(index int) (int64, error) {
-	temp := s.Head
+	temp := s.head
 	count := 0
 	for temp.Next() != nil {
 		temp = temp.Next()
@@ -43,7 +51,7 @@ func (s *singleLinkList) Get(index int) (int64, error) {
 }
 
 func (s *singleLinkList) Insert(index int, node Node) {
-	temp := s.Head
+	temp := s.head
 	var count int
 	for temp.Next() != nil {
 		if count == index {
@@ -58,7 +66,7 @@ func (s *singleLinkList) Insert(index int, node Node) {
 }
 
 func (s *singleLinkList) Delete(id int64) error {
-	temp := s.Head
+	temp := s.head
 	for temp.Next() != nil {
 		if temp.Next().ID() == id {
 			temp.SetNext(temp.Next().Next())
@@ -70,7 +78,7 @@ func (s *singleLinkList) Delete(id int64) error {
 }
 
 func (s *singleLinkList) Len() int {
-	temp := s.Head
+	temp := s.head
 	var count int
 	for temp.Next() != nil {
 		count++

@@ -82,3 +82,21 @@ func TestFindReverseIndex(t *testing.T) {
 	assert.Error(t, err)
 	assert.Equal(t, int64(0), value)
 }
+
+// 面試題2：反轉 Link List
+func TestSingleLinkList_Reverse(t *testing.T) {
+	linkList := NewSingleLinkList()
+	linkList.Add(NewNode(10))
+	linkList.Add(NewNode(20))
+	linkList.Add(NewNode(30))
+
+	newLinkList := NewSingleLinkList()
+	for linkList.Head().Next() != nil {
+		tmp := linkList.Head().Next()
+		linkList.Head().SetNext(tmp.Next())
+		tmp.SetNext(newLinkList.Head().Next())
+		newLinkList.Head().SetNext(tmp)
+	}
+	linkList.SetHead(newLinkList.Head())
+	assert.Equal(t, []int64{30, 20, 10}, linkList.List())
+}
