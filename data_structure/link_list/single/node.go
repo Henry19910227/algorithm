@@ -1,4 +1,4 @@
-package link_list
+package single
 
 type node struct {
 	id   int64

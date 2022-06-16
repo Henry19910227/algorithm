@@ -1,25 +1,25 @@
-package link_list
+package single
 
 import "errors"
 
-type singleLinkList struct {
+type linkList struct {
 	head Node
 }
 
-func NewSingleLinkList() LinkList {
+func New() LinkList {
 	head := NewNode(0)
-	return &singleLinkList{head: head}
+	return &linkList{head: head}
 }
 
-func (s *singleLinkList) Head() Node {
+func (s *linkList) Head() Node {
 	return s.head
 }
 
-func (s *singleLinkList) SetHead(node Node) {
+func (s *linkList) SetHead(node Node) {
 	s.head = node
 }
 
-func (s *singleLinkList) Add(node Node) {
+func (s *linkList) Add(node Node) {
 	temp := s.head
 	for temp.Next() != nil {
 		temp = temp.Next()
@@ -27,7 +27,7 @@ func (s *singleLinkList) Add(node Node) {
 	temp.SetNext(node)
 }
 
-func (s *singleLinkList) List() []int64 {
+func (s *linkList) List() []int64 {
 	list := make([]int64, 0)
 	temp := s.head
 	for temp.Next() != nil {
@@ -37,7 +37,7 @@ func (s *singleLinkList) List() []int64 {
 	return list
 }
 
-func (s *singleLinkList) Get(index int) (int64, error) {
+func (s *linkList) Get(index int) (int64, error) {
 	temp := s.head
 	count := 0
 	for temp.Next() != nil {
@@ -50,7 +50,7 @@ func (s *singleLinkList) Get(index int) (int64, error) {
 	return 0, errors.New("linklist overflow")
 }
 
-func (s *singleLinkList) Insert(index int, node Node) {
+func (s *linkList) Insert(index int, node Node) {
 	temp := s.head
 	var count int
 	for temp.Next() != nil {
@@ -65,7 +65,7 @@ func (s *singleLinkList) Insert(index int, node Node) {
 	s.Add(node)
 }
 
-func (s *singleLinkList) Delete(id int64) error {
+func (s *linkList) Delete(id int64) error {
 	temp := s.head
 	for temp.Next() != nil {
 		if temp.Next().ID() == id {
@@ -77,7 +77,7 @@ func (s *singleLinkList) Delete(id int64) error {
 	return errors.New("node not found")
 }
 
-func (s *singleLinkList) Len() int {
+func (s *linkList) Len() int {
 	temp := s.head
 	var count int
 	for temp.Next() != nil {

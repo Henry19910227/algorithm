@@ -1,4 +1,4 @@
-package link_list
+package single
 
 import (
 	"github.com/stretchr/testify/assert"
@@ -6,7 +6,7 @@ import (
 )
 
 func TestSingleLinkList_Add(t *testing.T) {
-	linkList := NewSingleLinkList()
+	linkList := New()
 	linkList.Add(NewNode(1))
 	linkList.Add(NewNode(2))
 	linkList.Add(NewNode(3))
@@ -14,7 +14,7 @@ func TestSingleLinkList_Add(t *testing.T) {
 }
 
 func TestSingleLinkList_Insert(t *testing.T) {
-	linkList := NewSingleLinkList()
+	linkList := New()
 	linkList.Add(NewNode(10))
 	linkList.Add(NewNode(20))
 	linkList.Add(NewNode(30))
@@ -25,7 +25,7 @@ func TestSingleLinkList_Insert(t *testing.T) {
 }
 
 func TestSingleLinkList_Delete(t *testing.T) {
-	linkList := NewSingleLinkList()
+	linkList := New()
 	assert.Error(t, linkList.Delete(100))
 	linkList.Add(NewNode(10))
 	linkList.Add(NewNode(20))
@@ -36,7 +36,7 @@ func TestSingleLinkList_Delete(t *testing.T) {
 }
 
 func TestSingleLinkList_Len(t *testing.T) {
-	linkList := NewSingleLinkList()
+	linkList := New()
 	assert.Equal(t, 0, linkList.Len())
 	linkList.Add(NewNode(10))
 	linkList.Add(NewNode(20))
@@ -45,7 +45,7 @@ func TestSingleLinkList_Len(t *testing.T) {
 }
 
 func TestSingleLinkList_Get(t *testing.T) {
-	linkList := NewSingleLinkList()
+	linkList := New()
 	linkList.Add(NewNode(10))
 	linkList.Add(NewNode(20))
 	linkList.Add(NewNode(30))
@@ -65,7 +65,7 @@ func TestSingleLinkList_Get(t *testing.T) {
 
 // 面試題1：查詢 single_link_list 倒數第K個節點
 func TestFindReverseIndex(t *testing.T) {
-	linkList := NewSingleLinkList()
+	linkList := New()
 	linkList.Add(NewNode(10))
 	linkList.Add(NewNode(20))
 	linkList.Add(NewNode(30))
@@ -85,12 +85,12 @@ func TestFindReverseIndex(t *testing.T) {
 
 // 面試題2：反轉 Link List
 func TestSingleLinkList_Reverse(t *testing.T) {
-	linkList := NewSingleLinkList()
+	linkList := New()
 	linkList.Add(NewNode(10))
 	linkList.Add(NewNode(20))
 	linkList.Add(NewNode(30))
 
-	newLinkList := NewSingleLinkList()
+	newLinkList := New()
 	for linkList.Head().Next() != nil {
 		tmp := linkList.Head().Next()
 		linkList.Head().SetNext(tmp.Next())

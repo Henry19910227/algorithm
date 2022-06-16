@@ -1,4 +1,4 @@
-package link_list
+package single
 
 type Node interface {
 	ID() int64
