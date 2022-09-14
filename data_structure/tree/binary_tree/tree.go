@@ -1,4 +1,4 @@
-package binary
+package binary_tree
 
 type tree struct {
 	root Node

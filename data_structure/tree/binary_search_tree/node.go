@@ -1,4 +1,4 @@
-package binary
+package binary_search_tree
 
 type node struct {
 	id    int64

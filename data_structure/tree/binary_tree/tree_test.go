@@ -1,4 +1,4 @@
-package binary
+package binary_tree
 
 import (
 	"github.com/stretchr/testify/assert"
