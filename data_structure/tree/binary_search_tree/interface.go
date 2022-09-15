@@ -14,4 +14,6 @@ type Tree interface {
 	Find(id int64) Node
 	FindMin() Node
 	FindMax() Node
+	Insert(node Node)
+	InOrder() []Node
 }
